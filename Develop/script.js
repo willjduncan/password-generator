@@ -41,6 +41,43 @@ if (includeNum) {
 console.log(totalChar);
 
 
+function generatePassword() {
+  var result = '';
+  var characters = totalChar
+  var charactersLength = totalChar.length;
+  for ( var i = 0; i < characterCount; i++ ) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  debugger;
+  doubleCheck(result);
+  return result;
+};
+
+function doubleCheck(result) {
+  console.log(result);
+  //CHECK WHETHER A CHARACTER FROM EACH APPROVED FAMILY IS INCLUDED IN THE GENERATED PASSWORD. IF NOT, MAKE A NEW PASSWORD.
+  if ((includeNum) && (result.match(/[0-9]/)) === null) {
+    console.log(result);
+    generatePassword();
+  } else if ((includeLower) && (result.match(/[a-z]/g)) === null) {
+    console.log(result);
+    generatePassword();
+  } else if ((includeUpper) && (result.match(/[A-Z]/g)) === null) {
+    console.log(result);
+    generatePassword();
+  } else if ((includeSpecial) && (result.match(/[ !~@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g)) === null) {
+    console.log(result);
+    generatePassword();
+  } else {
+    console.log("THIS WORKS:" + result);
+    var finalresult = result;
+    return finalresult;
+  }
+};
+// generatePassword();
+console.log(generatePassword());
+
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
