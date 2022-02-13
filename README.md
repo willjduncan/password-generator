@@ -67,7 +67,11 @@ The link to the live website is below:
 
 ## Usage
 
-Screenshots are shown of the Professional Portfolio at the screen dimensions of 375px, 568px, 768px, and 812px respectively, to show how Chrome DevTools was used to help make sure the webpage is user-friendly and mobile-accessible. 
+Screenshots are shown of the code near the end, but still incorrect. Note the use of console.log and the debugger being used to try and follow the code, as well as the use of commentary to categorize each section of code. 
+
+
+
+A final screenshot of the completed website in DevTools is added as to show how Chrome DevTools was used. Note in the Watch section three of the variables I tried to follow to solve my debugging 
 
 ![screenshot at 375px](/assets/images/screenshot-375px.png)
 ![screenshot at 568px](/assets/images/screenshot-568px.png)
