@@ -57,26 +57,25 @@ Now, when the button is pressed, the conditions are asked and followed, and at l
 
 My repository on GitHub is named password-generator. The link to this repository is below.
 
-[https://github.com/willjduncan/Professional-Portfolio.git](hhttps://github.com/willjduncan/Professional-Portfolio.git)
+[https://github.com/willjduncan/password-generator.git](https://github.com/willjduncan/password-generator.git)
 
 
 The link to the live website is below: 
 
-[https://willjduncan.github.io/Professional-Portfolio/](https://willjduncan.github.io/Professional-Portfolio/)
+[https://willjduncan.github.io/password-generator/](https://willjduncan.github.io/password-generator/)
 
 
 ## Usage
 
 Screenshots are shown of the code near the end, but still incorrect. Note the use of console.log and the debugger being used to try and follow the code, as well as the use of commentary to categorize each section of code. 
 
+![screenshot midwork part 1](/assets/images/screenshot-midwork-1.png)
+![screenshot midwork part 2](/assets/images/screenshot-midwork-2.png)
 
 
 A final screenshot of the completed website in DevTools is added as to show how Chrome DevTools was used. Note in the Watch section three of the variables I tried to follow to solve my debugging 
 
-![screenshot at 375px](/assets/images/screenshot-375px.png)
-![screenshot at 568px](/assets/images/screenshot-568px.png)
-![screenshot at 768px](/assets/images/screenshot-768px.png)
-![screenshot at 812px](/assets/images/screenshot-812px.png)
+![screenshot on DevTools](/assets/images/screenshot-devtools.png)
 
 ## Credits
 
