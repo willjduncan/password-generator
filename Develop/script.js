@@ -7,13 +7,16 @@ var upperChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var lowerChar = "abcdefghijklmnopqrstuvwxyz";
 var numChar = "1234567890"
 var totalChar = "";
+var finalresult = "";
 
+
+function generatePassword() {
 //GET THE CHARACTER COUNT WITHIN THE MAX AND MIN NUMBER OF CHARACTERS ALLOWED
 characterCount = window.prompt("how many characters long would you like your password to be?")
-  while (characterCount < characterMin || characterCount > characterMax) {
-    characterCount = window.prompt("Sorry, you must pick a number between " + characterMin + " and " + characterMax + ". How many characters long would you like your password to be?")
-  }
-  console.log(characterCount);
+while (characterCount < characterMin || characterCount > characterMax) {
+  characterCount = window.prompt("Sorry, you must pick a number between " + characterMin + " and " + characterMax + ". How many characters long would you like your password to be?")
+}
+// console.log(characterCount);
 
 //ASK WHETHER TO INCLUDE SPECIAL CHARACTERS AND REFLECT IT IN THE TOTAL CHARACTERS VARIABLE  
 includeSpecial = window.confirm("Do you want to include special characters?");
@@ -38,44 +41,46 @@ includeNum = window.confirm("Do you want to include numbers?");
 if (includeNum) {
   totalChar = totalChar + numChar;
 };
-console.log(totalChar);
 
+//GENERATE THE PASSWORD. IF THE PASSWORD DOES NOT FIT THE CONDITIONS, MAKE A NEW PASSWORD.
+  gen();
+  if (gen() === false) {
+    gen();
+  }
+  //CLEAR TOTALCHAR SO THAT WHEN THE BUTTON IS RECLICKED, THE CONDITIONS ARE RENEWED.
+  totalChar = '';
+  return finalresult;
+};
 
-function generatePassword() {
+//GENERATE THE PASSWORD
+function gen() {
   var result = '';
-  var characters = totalChar
-  var charactersLength = totalChar.length;
   for ( var i = 0; i < characterCount; i++ ) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    result += totalChar.charAt(Math.floor(Math.random() * totalChar.length));
   }
-  debugger;
-  doubleCheck(result);
-  return result;
+  //ENACT THE DOUBLE CHECK
+  if (doubleCheck(result) === true) {
+    return result;
+  } else {
+    return false;
+  }
 };
 
+//CHECK WHETHER A CHARACTER FROM EACH APPROVED FAMILY IS INCLUDED IN THE GENERATED PASSWORD.
 function doubleCheck(result) {
-  console.log(result);
-  //CHECK WHETHER A CHARACTER FROM EACH APPROVED FAMILY IS INCLUDED IN THE GENERATED PASSWORD. IF NOT, MAKE A NEW PASSWORD.
   if ((includeNum) && (result.match(/[0-9]/)) === null) {
-    console.log(result);
-    generatePassword();
+    return false;
   } else if ((includeLower) && (result.match(/[a-z]/g)) === null) {
-    console.log(result);
-    generatePassword();
+    return false;
   } else if ((includeUpper) && (result.match(/[A-Z]/g)) === null) {
-    console.log(result);
-    generatePassword();
+    return false;
   } else if ((includeSpecial) && (result.match(/[ !~@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g)) === null) {
-    console.log(result);
-    generatePassword();
+    return false;
   } else {
-    console.log("THIS WORKS:" + result);
-    var finalresult = result;
-    return finalresult;
+    finalresult = result;
+    return true;
   }
 };
-// generatePassword();
-console.log(generatePassword());
 
 
 // Get references to the #generate element
@@ -85,9 +90,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
