@@ -47,21 +47,15 @@ THEN the password is either displayed in an alert or written to the page
 
 First, I set up the prompts asking the user what character sets were allowed and how many characters were desired in the password length, and then added the variables at the top to store the answers. Then I created a password generator using the approved character set and the math.random() function in symphony with math.floor to give an integer index number. 
 
-Next, I had to double check the password to make sure at least one of each approved character family appeared in the password. I created a separate function and used if/else statements to check the password, and return a true/false value depending. This caused me the most trouble, because I initially had the password regenerate within the doubleCheck, which caused the correct result to be found, but then be replaced with the original, incorrect password as soon as it left the doubleCheck. I realized that the issue was to be found in the nesting. I solved the problem by having the doubleCheck simply provide a true/false statement, and having that true/false statement reflected in the password generator (gen()) through an answer/false statement. Only by bringing the answer all the way out of the gen() function was I able to then ask the gen() function to try again if it came out false. 
+Next, I had to double check the password to make sure at least one of each approved character family appeared in the password. I created a separate function and used if/else statements to check the password, and return a true/false value depending. This caused me the most trouble, because I initially had the password regenerate within the doubleCheck, which caused the correct result to be found, but then be replaced with the original, incorrect password as soon as it left the doubleCheck. With the help of debugging and tinkering, I realized that the issue was to be found in the nesting. I solved the problem by having the doubleCheck simply provide a true/false statement, and having that true/false statement reflected in the password generator (gen()) through an answer/false statement. Only by bringing the answer all the way out of the gen() function was I able to then ask the gen() function to try again if it came out false. 
 
+Once the doubleCheck was completed, I placed the entire passwordGenerator() function around the prompts so that they only appeared once the button was clicked. After testing it a few times, I noticed that if the user presses the button again with different character conditions, they were not met. I realized this is because the totalChar variable carries over iteration to iteration, so I added a way to clear it once a correct password was found.  
 
-<!-- By accomplishing these goals, my website will serve as an ideal and impressive center where I can demonstrate my coding abilities. 
-
-First, I created the HTML section by section, in a similar style that RunBuddy was set up, beginning with the header and footer, followed by the hero, and then on to the Contact Me, Resume, and Work sections. These sections were chosen based on the mock-up video, as were the different work projects. Since Run Buddy is the only project completed so far, that was the only one I linked correctly. The projects link to tangentially related websites to serve as current placeholders.  
-
-Once I had those HTML elements in place, I added CSS. Using a color code complimenter and generator found at https://coolors.co/, I arranged the styles to look good first as viewed from my own laptop. Once that was complete, I used Chrome DevTools to make changes and then tinker with the style at different sizes. Although Run Buddy was arranged for only 4 sizes (laptop, 980px, 768px, 570px), I also included an extra case for screen sizes below 400px, because things got wonky viewing it from common devices like the iPhone X. 
-
-Now, the website is ready to be viewed and to have new projects added to it whenever I complete them.  -->
-
+Now, when the button is pressed, the conditions are asked and followed, and at least one of each approved character type appears in the resulting password. Furthermore, upon multiple clicks, the password generator continues to perform its function, making it a reliable generator. 
 
 ## Installation
 
-My repository on GitHub is named Professional-Portfolio. The link to this repository is below.
+My repository on GitHub is named password-generator. The link to this repository is below.
 
 [https://github.com/willjduncan/Professional-Portfolio.git](hhttps://github.com/willjduncan/Professional-Portfolio.git)
 
