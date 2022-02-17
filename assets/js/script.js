@@ -16,7 +16,6 @@ function generatePassword() {
   while (characterCount < characterMin || characterCount > characterMax) {
     characterCount = window.prompt("Sorry, you must pick a number between " + characterMin + " and " + characterMax + ". How many characters long would you like your password to be?")
   }
-  // console.log(characterCount);
 
   //ASK WHETHER TO INCLUDE SPECIAL CHARACTERS AND REFLECT IT IN THE TOTAL CHARACTERS VARIABLE  
   includeSpecial = window.confirm("Do you want to include special characters?");
