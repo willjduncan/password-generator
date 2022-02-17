@@ -1,21 +1,35 @@
 // Assignment code here
 //VARIABLES
-var characterMin = 8;
-var characterMax = 128;
-var specialChar = "!\"#$%&'()*+,-./:;<=>?@[]^_`\\{|}~";
-var upperChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var lowerChar = "abcdefghijklmnopqrstuvwxyz";
-var numChar = "1234567890"
+const characterMin = 8;
+const characterMax = 128;
+const specialChar = "!\"#$%&'()*+,-./:;<=>?@[]^_`\\{|}~";
+const upperChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lowerChar = "abcdefghijklmnopqrstuvwxyz";
+const numChar = "1234567890"
 var totalChar = "";
 var finalresult = "";
 
 
 function generatePassword() {
+  //RE-CLEAR THE FINAL RESULT EACH TIME TO GENERATE A NEW PASSWORD
+  finalresult = "";
+  //ISSUE PROMPTS
+  promptUser();
+  //WHILE NO FINAL RESULT IS FOUND, GENERATE A PASSWORD
+  while (!finalresult) {
+    gen();
+  };
+  //CLEAR TOTALCHAR SO THAT WHEN THE BUTTON IS RE-CLICKED, THE CONDITIONS ARE RENEWED.
+  totalChar = '';
+  return finalresult;
+};
+
+var promptUser = function() {
   //GET THE CHARACTER COUNT WITHIN THE MAX AND MIN NUMBER OF CHARACTERS ALLOWED
   characterCount = window.prompt("how many characters long would you like your password to be?")
   while (characterCount < characterMin || characterCount > characterMax) {
     characterCount = window.prompt("Sorry, you must pick a number between " + characterMin + " and " + characterMax + ". How many characters long would you like your password to be?")
-  }
+  };
 
   //ASK WHETHER TO INCLUDE SPECIAL CHARACTERS AND REFLECT IT IN THE TOTAL CHARACTERS VARIABLE  
   includeSpecial = window.confirm("Do you want to include special characters?");
@@ -40,15 +54,6 @@ function generatePassword() {
   if (includeNum) {
     totalChar = totalChar + numChar;
   };
-
-  //GENERATE THE PASSWORD. IF THE PASSWORD DOES NOT FIT THE CONDITIONS, MAKE A NEW PASSWORD.
-  gen();
-  if (gen() === false) {
-    gen();
-  }
-  //CLEAR TOTALCHAR SO THAT WHEN THE BUTTON IS RECLICKED, THE CONDITIONS ARE RENEWED.
-  totalChar = '';
-  return finalresult;
 };
 
 //GENERATE THE PASSWORD
@@ -56,28 +61,20 @@ function gen() {
   var result = '';
   for ( var i = 0; i < characterCount; i++ ) {
     result += totalChar.charAt(Math.floor(Math.random() * totalChar.length));
-  }
-  //ENACT THE DOUBLE CHECK
-  if (doubleCheck(result) === true) {
-    return result;
-  } else {
-    return false;
-  }
-};
+  };
 
-//CHECK WHETHER A CHARACTER FROM EACH APPROVED FAMILY IS INCLUDED IN THE GENERATED PASSWORD.
-function doubleCheck(result) {
+  //CHECK WHETHER A CHARACTER FROM EACH APPROVED FAMILY IS INCLUDED IN THE GENERATED PASSWORD.
   if ((includeNum) && (result.match(/[0-9]/)) === null) {
-    return false;
+    return;
   } else if ((includeLower) && (result.match(/[a-z]/g)) === null) {
-    return false;
+    return;
   } else if ((includeUpper) && (result.match(/[A-Z]/g)) === null) {
-    return false;
+    return;
   } else if ((includeSpecial) && (result.match(/[ !~@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g)) === null) {
-    return false;
+    return;
   } else {
     finalresult = result;
-    return true;
+    return;
   }
 };
 
